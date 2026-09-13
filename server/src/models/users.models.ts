@@ -1,13 +1,5 @@
 import { db } from "../database/db";
-
-type NewUser = {
-    name: string
-    login: string
-    hashedPassword: string
-    email: string
-    number: number
-    cpf: number
-}
+import { UserBody } from "../types/users.types";
 
 export async function search(column: string|number, data: string|number) {
     const search = await db.query(`
@@ -17,8 +9,8 @@ export async function search(column: string|number, data: string|number) {
     return search
 }
 
-export async function insertUser(data: NewUser) {
-    const { name, login, hashedPassword, email, number, cpf } = data
+export async function insertUser(data: UserBody) {
+    const { name, login, password, email, phone, cpf } = data
 
     const result = await db.query(`
         INSERT INTO users
@@ -26,7 +18,7 @@ export async function insertUser(data: NewUser) {
         VALUES
         ($1, $2, $3, $4, $5, $6)
         RETURNING id
-    `, [name, login, hashedPassword, email, number, cpf]);
+    `, [name, login, password, email, phone, cpf]);
 
     return result
 }

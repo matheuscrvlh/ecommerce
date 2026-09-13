@@ -1,18 +1,18 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { hashPassword } from "../utils/hash";
-import { insertUser, search } from "../models/users.models";
-import { UserBody } from "../types/users.types";
+import { insertClient, search } from "../models/clients.models";
+import { ClientBody } from "../types/clients.types";
 
-export async function addUser(req:FastifyRequest<{Body: UserBody}>, res:FastifyReply) {
-    const { name, login, password, email, phone, cpf } = req.body
+export async function newClient(req:FastifyRequest<{Body: ClientBody}>, res:FastifyReply) {
+    const { name, password, cpf, email, phone } = req.body
 
     try {
         // Validação de campos
         const fieldsToCheck: [SearchColumn, string | number | undefined][] = [
-            ['login', login],
-            ['email', email],
+            ['name', name],
             ['cpf', cpf],
-            ['phone', phone]
+            ['email', email],
+            ['phone', phone],
         ]
 
         for (const [column, value] of fieldsToCheck) {
@@ -27,16 +27,16 @@ export async function addUser(req:FastifyRequest<{Body: UserBody}>, res:FastifyR
 
         const hashedPassword = await hashPassword(password)
 
-        const result = await insertUser({name, login, hashedPassword, email, phone, cpf})
+        const result = await insertClient({name, hashedPassword, cpf, email, phone})
 
         if(!result.rows[0].id) {
             console.error('Erro ao inserir usuário');
             return
         }
 
-        res.code(201).send({ success: `Usuário login ${login} criado com sucesso.` })
-    } catch (err) {
-        console.error(err)
-        res.code(500).send({ error: 'Erro interno do servidor.' })
+        res.code(201).send({ success: 'Usuário cadastrado com sucesso.'})
+    } catch(err) {
+        console.error(err) 
+        res.code(500).send({ error: 'Erro interno do servidor.'})
     }
 }
