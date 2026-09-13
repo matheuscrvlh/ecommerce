@@ -1,16 +1,10 @@
-import { db } from '../database/db.ts';
-import jwt from 'jsonwebtoken';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
+import { login } from '../controllers/auth.controllers';
 
-type loginBody = {
-    user: string,
-    password: string
+async function loginUser(req:FastifyRequest, res:FastifyReply) {
+    await login(req, res)
 }
 
-async function login(req:FastifyRequest<{Body: loginBody}>, res:FastifyReply) {
-    const { user, password } = req.body
-
-    try {
-        const search 
-    }
+export async function authRoutes(fastify: FastifyInstance) {
+    fastify.post('/login', loginUser);
 }

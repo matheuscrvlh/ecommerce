@@ -1,4 +1,5 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify'
+import { authenticate } from '../middlewares/auth.middlewares.ts';
 import { addUser } from '../controllers/users.controllers.ts'
 
 async function postUser(req:FastifyRequest, res:FastifyReply) {
@@ -6,5 +7,5 @@ async function postUser(req:FastifyRequest, res:FastifyReply) {
 }
 
 export async function usersRoutes(fastify: FastifyInstance) {
-    fastify.post('/user', postUser);
+    fastify.post('/user', { preHandler: authenticate }, postUser);
 }
