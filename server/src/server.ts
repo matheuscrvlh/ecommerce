@@ -4,6 +4,7 @@ import { db } from './database/db.ts'
 import { usersRoutes } from './routes/users.routes.ts'
 import { authRoutes } from './routes/auth.routes.ts'
 import { clientsRoutes } from './routes/clients.routes.ts'
+import { productsRoutes } from './routes/products.routes.ts'
 
 const app = Fastify()
 
@@ -19,6 +20,7 @@ if(!process.env.JWT_SECRET) {
 app.register(usersRoutes);
 app.register(authRoutes);
 app.register(clientsRoutes);
+app.register(productsRoutes)
 
 async function start() {
     await app.listen({ port: 3000 });
