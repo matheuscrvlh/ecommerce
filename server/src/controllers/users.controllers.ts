@@ -1,18 +1,18 @@
 import type { FastifyRequest, FastifyReply } from "fastify";
 import { hashPassword } from "../utils/hash";
 import { insertUser, search } from "../models/users.models";
-import { UserBody } from "../types/users.types";
+import { UserBody } from "../types/user.types";
 
 export async function addUser(req:FastifyRequest<{Body: UserBody}>, res:FastifyReply) {
-    const { name, login, password, email, phone, cpf } = req.body
+    const { nome, login, senha, email, telefone, cpf } = req.body
 
     try {
         // Validação de campos
-        const fieldsToCheck: [SearchColumn, string | number | undefined][] = [
+        const fieldsToCheck: [string, string | number | undefined][] = [
             ['login', login],
             ['email', email],
             ['cpf', cpf],
-            ['phone', phone]
+            ['telefone', telefone]
         ]
 
         for (const [column, value] of fieldsToCheck) {
@@ -25,9 +25,9 @@ export async function addUser(req:FastifyRequest<{Body: UserBody}>, res:FastifyR
             }
         }
 
-        const hashedPassword = await hashPassword(password)
+        const hashedPassword = await hashPassword(senha)
 
-        const result = await insertUser({name, login, hashedPassword, email, phone, cpf})
+        const result = await insertUser({nome, login, hashedPassword, email, telefone, cpf})
 
         if(!result.rows[0].id) {
             console.error('Erro ao inserir usuário');

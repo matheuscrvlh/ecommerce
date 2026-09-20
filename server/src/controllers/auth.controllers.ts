@@ -5,11 +5,11 @@ import { verifyPassword } from "../utils/hash";
 
 type LoginUser = {
     login: string
-    password: string
+    senha: string
 }
 
 export async function login(req:FastifyRequest<{Body: LoginUser}>, res:FastifyReply) {
-    const { login, password } = req.body
+    const { login, senha } = req.body
 
     try {
         const searchUser = await search(login)
@@ -18,7 +18,7 @@ export async function login(req:FastifyRequest<{Body: LoginUser}>, res:FastifyRe
             return
         }
 
-        const isValid = await verifyPassword(password, searchUser.rows[0].password)
+        const isValid = await verifyPassword(senha, searchUser.rows[0].senha)
         if(!isValid) {
             res.code(401).send({ error: 'Senha inválida.'})
             return

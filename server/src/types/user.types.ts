@@ -1,8 +1,8 @@
 export type UserBody = {
-    name: string,
+    nome: string,
     login: string,
-    password: string,
+    senha: string,
     email: string,
-    phone: number,
+    telefone: number,
     cpf: number
 }

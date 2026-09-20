@@ -4,16 +4,14 @@ import { insertProduct, search } from "../models/products.models";
 
 export async function createProduct(req:FastifyRequest<{Body: ProductBody}>, res:FastifyReply) {
     const { 
-        sku, ean, name, description, short_description, category_id, brand_id, 
-        product_type, unit, is_active, is_published 
+        marca_id, nome, slug, descricao, descricao_curta, tipo_produto, ativo, publicado 
     } = req.body
 
     try {
         // Validação
-        const fieldsToCheck: [ProductBody][] = [
-            ['sku': sku],
-            ['ean': ean],
-            ['name': name]
+        const fieldsToCheck: [string, string][] = [
+            ['nome', nome],
+            ['slug', slug]
         ]
 
         for (const [column, value] of fieldsToCheck) {
@@ -26,8 +24,7 @@ export async function createProduct(req:FastifyRequest<{Body: ProductBody}>, res
             }
         }
 
-        const result = await insertProduct({ sku, ean, name, description, short_description, category_id, brand_id, 
-        product_type, unit, is_active, is_published })
+        const result = await insertProduct({ marca_id, nome, slug, descricao, descricao_curta, tipo_produto, ativo, publicado  })
 
         if(!result.rows[0].id) {
             console.error('Erro ao inserir produto');

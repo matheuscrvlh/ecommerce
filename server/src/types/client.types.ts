@@ -1,8 +1,8 @@
 export type ClientBody = {
-    name: string
-    password?: string
+    nome: string
+    senha?: string
     hashedPassword?:string 
     cpf: number
     email: string
-    phone: number
+    telefone: number
 }

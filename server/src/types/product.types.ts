@@ -1,13 +1,10 @@
 export type ProductBody = {
-    sku: number 
-    ean?: number 
-    name: string 
-    description?: string 
-    short_description?: string 
-    category_id?: number 
-    brand_id?: number
-    product_type: string 
-    unit: number 
-    is_active: boolean
-    is_published: boolean
+    marca_id?: number
+    nome: string
+    slug: string
+    descricao?: string
+    descricao_curta?: string
+    tipo_produto: string
+    ativo?: boolean
+    publicado?: boolean
 }
