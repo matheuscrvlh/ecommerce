@@ -6,6 +6,9 @@ import { authRoutes } from './routes/auth.routes.ts'
 import { clientsRoutes } from './routes/clients.routes.ts'
 import { productsRoutes } from './routes/products.routes.ts'
 import { brandsRoutes } from './routes/brands.routes.ts'
+import { categoriesRoutes } from './routes/categories.routes.ts'
+import { productCategoriesRoutes } from './routes/productCategories.routes.ts'
+import { productVariantRoutes } from './routes/productVariant.routes.ts'
 
 const app = Fastify()
 
@@ -23,6 +26,9 @@ app.register(authRoutes);
 app.register(clientsRoutes);
 app.register(productsRoutes);
 app.register(brandsRoutes)
+app.register(categoriesRoutes)
+app.register(productCategoriesRoutes)
+app.register(productVariantRoutes)
 
 async function start() {
     await app.listen({ port: 3000 });

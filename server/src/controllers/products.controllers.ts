@@ -4,7 +4,7 @@ import { insertProduct, search } from "../models/products.models";
 
 export async function createProduct(req:FastifyRequest<{Body: ProductBody}>, res:FastifyReply) {
     const { 
-        marca_id, nome, slug, descricao, descricao_curta, tipo_produto, ativo, publicado 
+        marca_id, nome, slug, descricao, descricao_curta, tipo_produto, ativo, publicado
     } = req.body
 
     try {
