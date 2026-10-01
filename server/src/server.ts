@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import Fastify from "fastify"
+import Fastify, { fastify } from "fastify"
 import { db } from './database/db.ts'
 import { usersRoutes } from './routes/users.routes.ts'
 import { authRoutes } from './routes/auth.routes.ts'
@@ -9,6 +9,7 @@ import { brandsRoutes } from './routes/brands.routes.ts'
 import { categoriesRoutes } from './routes/categories.routes.ts'
 import { productCategoriesRoutes } from './routes/productCategories.routes.ts'
 import { productVariantRoutes } from './routes/productVariant.routes.ts'
+import { uploadsRoutes } from './routes/uploads.routes.ts'
 
 const app = Fastify()
 
@@ -25,10 +26,11 @@ app.register(usersRoutes);
 app.register(authRoutes);
 app.register(clientsRoutes);
 app.register(productsRoutes);
-app.register(brandsRoutes)
-app.register(categoriesRoutes)
-app.register(productCategoriesRoutes)
-app.register(productVariantRoutes)
+app.register(brandsRoutes);
+app.register(categoriesRoutes);
+app.register(productCategoriesRoutes);
+app.register(productVariantRoutes);
+app.register(uploadsRoutes);
 
 async function start() {
     await app.listen({ port: 3000 });

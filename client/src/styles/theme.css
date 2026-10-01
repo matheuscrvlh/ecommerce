@@ -1,0 +1,118 @@
+/* =========================================================
+   Tokens de tema
+   Escuro (padrão) — baseado no Vision UI (system design/image.png)
+   ========================================================= */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --bg: #060b26;
+  --bg-gradient:
+    radial-gradient(ellipse 55% 40% at 62% 58%, rgba(0, 117, 255, 0.28), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 85% 5%, rgba(122, 70, 255, 0.18), transparent 70%),
+    linear-gradient(159deg, #0f123b 14%, #090d2e 56%, #020515 86%);
+
+  --surface: linear-gradient(127deg, rgba(6, 11, 40, 0.94) 19%, rgba(10, 14, 35, 0.6) 76%);
+  --surface-solid: #0b1033;
+  --surface-border: rgba(255, 255, 255, 0.06);
+  --surface-hover: rgba(255, 255, 255, 0.04);
+  --inset: linear-gradient(127deg, #060b28 20%, rgba(10, 14, 35, 0.7) 80%);
+  --sidebar-bg: linear-gradient(111deg, rgba(6, 11, 38, 0.94) 60%, rgba(26, 31, 55, 0.6) 100%);
+  --overlay: rgba(2, 5, 21, 0.6);
+
+  --text: #ffffff;
+  --text-muted: #a0aec0;
+  --text-subtle: #718096;
+
+  --primary: #0075ff;
+  --primary-hover: #2b8cff;
+  --primary-soft: rgba(0, 117, 255, 0.16);
+  --on-primary: #ffffff;
+  --success: #01b574;
+  --success-soft: rgba(1, 181, 116, 0.14);
+  --danger: #ff4d5e;
+  --danger-soft: rgba(227, 26, 26, 0.16);
+  --warning: #ffb547;
+  --info-soft: rgba(0, 117, 255, 0.12);
+
+  --input-bg: #0f1535;
+  --input-border: rgba(226, 232, 240, 0.18);
+  --input-focus: rgba(0, 117, 255, 0.45);
+
+  --divider: rgba(255, 255, 255, 0.08);
+  --chart-grid: #56577a;
+  --chart-1: #2cd9ff;
+  --chart-2: #0075ff;
+  --bar-panel: linear-gradient(127deg, #060b28 19%, rgba(10, 14, 35, 0.7) 76%);
+  --bar-color: #ffffff;
+  --gauge-track: rgba(255, 255, 255, 0.06);
+  --progress-track: #2d2e5f;
+
+  --welcome-gradient:
+    radial-gradient(circle at 78% 45%, rgba(122, 92, 255, 0.85), rgba(0, 117, 255, 0.35) 30%, transparent 60%),
+    linear-gradient(127deg, #060b28 20%, #0b1a5c 100%);
+  --hero-gradient: linear-gradient(120deg, #0f123b 0%, #102a8f 55%, #3d1fa8 100%);
+
+  --shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+/* =========================================================
+   Claro
+   ========================================================= */
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f4f7fe;
+  --bg-gradient:
+    radial-gradient(ellipse 55% 40% at 62% 58%, rgba(0, 117, 255, 0.07), transparent 70%),
+    linear-gradient(159deg, #f7f9ff 0%, #eef2fc 100%);
+
+  --surface: #ffffff;
+  --surface-solid: #ffffff;
+  --surface-border: #e9edf7;
+  --surface-hover: #f4f7fe;
+  --inset: #f4f7fe;
+  --sidebar-bg: #ffffff;
+  --overlay: rgba(27, 37, 89, 0.35);
+
+  --text: #1b2559;
+  --text-muted: #6b7aa6;
+  --text-subtle: #a3aed0;
+
+  --primary: #0075ff;
+  --primary-hover: #0060d6;
+  --primary-soft: rgba(0, 117, 255, 0.1);
+  --success: #019a63;
+  --success-soft: rgba(1, 181, 116, 0.12);
+  --danger: #d61a2c;
+  --danger-soft: rgba(227, 26, 26, 0.08);
+  --warning: #d98400;
+  --info-soft: rgba(0, 117, 255, 0.08);
+
+  --input-bg: #ffffff;
+  --input-border: #dfe5f2;
+  --input-focus: rgba(0, 117, 255, 0.25);
+
+  --divider: #e9edf7;
+  --chart-grid: #cbd3e8;
+  --chart-1: #14b8e6;
+  --chart-2: #0075ff;
+  --bar-panel: linear-gradient(127deg, #0075ff 0%, #3aa0ff 100%);
+  --bar-color: #ffffff;
+  --gauge-track: #e9edf7;
+  --progress-track: #e2e8f5;
+
+  --welcome-gradient:
+    radial-gradient(circle at 78% 45%, rgba(122, 92, 255, 0.55), rgba(0, 117, 255, 0.25) 30%, transparent 60%),
+    linear-gradient(127deg, #ffffff 30%, #e6efff 100%);
+  --hero-gradient: linear-gradient(120deg, #e8f1ff 0%, #d7e6ff 55%, #e6dcff 100%);
+
+  --shadow: 0 18px 40px rgba(112, 144, 176, 0.12);
+}
