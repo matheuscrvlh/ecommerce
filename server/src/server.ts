@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import Fastify, { fastify } from "fastify"
+import multipart from '@fastify/multipart'
 import { db } from './database/db.ts'
 import { usersRoutes } from './routes/users.routes.ts'
 import { authRoutes } from './routes/auth.routes.ts'
@@ -21,6 +22,10 @@ if(!process.env.JWT_SECRET) {
     console.log('Erro ao encontrar JWT_SECRET em .env')
     process.exit(1)
 }
+
+app.register(multipart, {
+    limits: { fileSize: 5 * 1024 * 1024 }
+})
 
 app.register(usersRoutes);
 app.register(authRoutes);

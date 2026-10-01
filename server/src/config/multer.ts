@@ -6,8 +6,8 @@ export const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const baseDir = 'uploads/products'
 
-        const uploadDir = path.join(__dirname, baseDir)
-        fs.mkdirSync(upload, {recursive: true})
+        const uploadDir = path.join(import.meta.dirname, baseDir)
+        fs.mkdirSync(uploadDir, {recursive: true})
 
         req.uploadDir = uploadDir
         cb(null, uploadDir)
@@ -20,4 +20,4 @@ export const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ })
+export const upload = multer({ storage })
